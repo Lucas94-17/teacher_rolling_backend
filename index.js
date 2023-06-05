@@ -4,18 +4,15 @@ const dotenv = require("dotenv")
 
 dotenv.config()
 
+const router = require("./routes/routes")
+
+require("./database/database")
+
 const app = express()
 
 app.use(cors())
 app.use(express.json())
-
-app.get("/", (req, res) => {
-	res.status(200).send("It works!")
-})
-
-app.post("/users", (req, res) => {
-	res.status(201).send({ ...req.body, dami: "no cortes a luz" })
-})
+app.use("/api", router)
 
 app.listen(process.env.PORT, () => {
 	console.log(
