@@ -11,6 +11,7 @@ const userSchema = new Schema({
 	},
 	role: {
 		type: String,
+		enum: ["admin", "guest"],
 		required: true,
 	},
 	lastName: {
@@ -24,6 +25,15 @@ const userSchema = new Schema({
 	password: {
 		type: String,
 		required: true,
+	},
+	email: {
+		type: String,
+		required: true,
+		// probar
+		/* match: [
+			/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+			"Please fill a valid email address",
+		], */
 	},
 })
 
